@@ -7,12 +7,10 @@
     <link rel="shortcut icon" href="./img/icon.jpg" />
     <link rel="stylesheet" href="./styles/index.css">
     <title>Alquifree</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body class="light-theme">
 
+<body class="light-theme">
     <div class="container">
         <div class="titulopagina">
             <img src="./img/bicicleta.png" alt="">
@@ -23,7 +21,6 @@
             <img src="./img/ropa.png" alt="">
             <img src="./img/lavadora.png" alt="">
         </div>
-    </div>
 
         <div class="header">
             <nav class="navbar">
@@ -56,7 +53,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="perfil">
+                        <div class="perfil">                                                 
                             <img class="perfilimg" src="./img/perfil.png" alt="">
                             <a href="login.html" id="sesion">Iniciar Sesión</a>
                             <p id="userName" style="display: none;"></p>
@@ -89,8 +86,7 @@
                     </div>
                     <div class="publicacionBtn">
                         <button onclick="alquilar()">Alquilar ahora</button>
-                        <button onclick="agregarAlCarrito(' Bicicleta raulxav 2022 950',5000)">Agregar al
-                            carrito</button>
+                        <button onclick="agregarAlCarrito(' Bicicleta raulxav 2022 950',5000)">Agregar al carrito</button>            
                     </div>
 
                 </div>
@@ -102,7 +98,7 @@
                         <p>(1 unidad)</p>
                     </div>
                     <div class="publicacionBtn">
-                        <button onclick="alquilar()">Alquilar ahora</button>
+                        <button onclick="alquilar()">Alquilar ahora</button>                       
                         <button onclick="agregarAlCarrito('Lugar para quinceañero',350000)">Agregar al carrito</button>
                     </div>
                 </div>
@@ -189,18 +185,18 @@
                         <button id="pu">Alquilar ahora</button>
                         <button onclick="agregarAlCarrito('Sillas para eventos',10000)">Agregar al carrito</button>
                     </div>
-                </div>
+                </div>               
             </div>
-
-        <div class="container">
-            <h2>Carrito de Compra</h2>
-            <div id="carrito">
-                <ul id="lista-carrito">
-                </ul>
-                <p>Total: $<span id="total-carrito">0</span></p>
-            </div>
-            <button>Pagar Ahora</button>
         </div>
+
+        <center><h2>Carrito de Compra</h2>
+        <div id="carrito">
+          <ul id="lista-carrito">
+          </ul>
+          <p>Total: $<span id="total-carrito">0</span></p>
+        </div>
+        <button>Pagar Ahora</button>
+        </center>
 
         <div class="footer">
 
@@ -260,9 +256,6 @@
 
     </script>
     <script src="app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
