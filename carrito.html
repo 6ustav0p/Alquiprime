@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito de Compras</title>
+  <link rel="stylesheet" href="./styles/carrito.css">
+</head>
+<body>
+  <h1>Carrito de Compras</h1>
+  <div id="carritoItems">
+    <!-- Aquí se mostrarán los productos en el carrito -->
+  </div>
+
+  <script>
+  function mostrarProductosEnCarrito() {
+  const carrito = JSON.parse(localStorage.getItem('carrito'));
+  const carritoItems = document.getElementById('carritoItems');
+  let total = 0;
+
+  carrito.forEach((producto) => {
+    const { id, nombre, precio } = producto;
+    const productoElemento = document.createElement('div');
+    productoElemento.classList.add('carritoProducto');
+
+    const nombreElemento = document.createElement('p');
+    nombreElemento.textContent = `Nombre: ${nombre}`;
+    productoElemento.appendChild(nombreElemento);
+
+    const precioElemento = document.createElement('p');
+    precioElemento.textContent = `Precio: ${precio}`;
+    productoElemento.appendChild(precioElemento);
+
+    const botonEliminar = document.createElement('button');
+    botonEliminar.textContent = 'Eliminar';
+    botonEliminar.onclick = () => eliminarDelCarrito(id);
+    productoElemento.appendChild(botonEliminar);
+
+    carritoItems.appendChild(productoElemento);
+
+    total += precio;
+  });
+
+  const totalCarrito = document.getElementById('total-carrito');
+  totalCarrito.textContent = `Total: $${total.toFixed(2)}`;
+}
+
+function eliminarDelCarrito(id) {
+  let carrito = JSON.parse(localStorage.getItem('carrito'));
+  carrito = carrito.filter(producto => producto.id !== id);
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+
+  // Volver a mostrar los productos actualizados
+  const carritoItems = document.getElementById('carritoItems');
+  carritoItems.innerHTML = '';
+  mostrarProductosEnCarrito();
+}
+
+// Mostrar los productos en el carrito cuando la página se cargue
+window.onload = mostrarProductosEnCarrito;
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Producto</title>
+  <link rel="stylesheet" href="./styles/producto.css">
+</head>
+<body>
+  <h1>Detalles del Producto</h1>
+  <div id="detalleProducto">
+    <img src="productosimg/bicicleta1.png" alt="">
+  </div>
+  <button id="alquilarBtn">Alquilar ahora</button>
+
+  <script>
+    // Función para obtener los parámetros de la URL
+    function obtenerParametrosURL() {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const producto = {
+        nombre: urlParams.get('nombre'),
+        precio: urlParams.get('precio'),
+        unidades: urlParams.get('unidades')
+      };
+      return producto;
+    }
+
+    // Función para redireccionar al carrito de compras con los datos del producto
+    function agregarAlCarrito() {
+      const producto = obtenerParametrosURL();
+      const { nombre, precio, unidades } = producto;
+
+      // Redireccionar a la página del carrito de compras y pasar los datos del producto
+      window.location.href = `carrito.html?nombre=${encodeURIComponent(nombre)}&precio=${encodeURIComponent(precio)}&unidades=${encodeURIComponent(unidades)}`;
+    }
+
+    // Mostrar los detalles del producto cuando la página se cargue
+    window.onload = function() {
+      mostrarDetallesProducto();
+      
+      // Agregar evento al botón "Alquilar ahora"
+      document.getElementById('alquilarBtn').addEventListener('click', agregarAlCarrito);
+    };
+
+    // Función para mostrar los detalles del producto en la página
+    function mostrarDetallesProducto() {
+      const producto = obtenerParametrosURL();
+      const detalleProducto = document.getElementById('detalleProducto');
+      
+      // Crear elementos HTML para mostrar los detalles del producto
+      const nombreElemento = document.createElement('p');
+      nombreElemento.textContent = `Nombre: ${producto.nombre}`;
+      detalleProducto.appendChild(nombreElemento);
+
+      const precioElemento = document.createElement('p');
+      precioElemento.textContent = `Precio: ${producto.precio}`;
+      detalleProducto.appendChild(precioElemento);
+
+      const unidadesElemento = document.createElement('p');
+      unidadesElemento.textContent = `Unidades: ${producto.unidades}`;
+      detalleProducto.appendChild(unidadesElemento);
+    }
+  </script>
+</body>
+</html>
