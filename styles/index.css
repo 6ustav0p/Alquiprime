@@ -110,6 +110,15 @@
     transform: scale(1.2, 1.2);
 }
 
+.navbar {
+    background-color: var(--gris); /* Cambié a tu variable de color */
+    color: var(--white); /* Cambié a tu variable de color */
+    width: auto;
+    -webkit-box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.48);
+    -moz-box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.48);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.48);
+}
+
 .navbar li {
     flex: 1;
     display: inline-block;
@@ -117,10 +126,57 @@
     text-align: center;
 }
 
+.navbar ul {
+    /* Modifiqué la propiedad para resolver el problema de la alineación */
+    list-style-type: none;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    gap: 17px;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
 .navbar img:hover {
     cursor: pointer;
 }
+/* Añadí estilos para los enlaces y botones en la barra de navegación */
+.navbar a {
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--white);
+}
 
+/* Modifiqué la regla de hover para los enlaces de la barra de navegación */
+.navbar a:hover {
+    color: #fff;
+    transform: scale(1.2, 1.2);
+}
+.publicacionBtn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.publicacion button {
+    align-items: center;
+    padding: 5px;
+    width: 150px;
+    height: 30px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background-color: var(--btnBg);
+    color: var(--btnFontColor);
+    border: none;
+}
+
+/* Modifiqué la regla de hover para los botones de publicación */
+.publicacion button:hover {
+    cursor: pointer;
+    background-color: #00FF00; /* Cambié a tu variable de color */
+    color: #fff;
+}
 #links {
     font-size: 20px;
     text-decoration: none;
