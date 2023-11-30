@@ -170,7 +170,6 @@
     color: var(--btnFontColor);
     border: none;
 }
-
 /* Modifiqué la regla de hover para los botones de publicación */
 .publicacion button:hover {
     cursor: pointer;
