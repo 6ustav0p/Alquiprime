@@ -26,58 +26,48 @@
       </div>
     </div>
   </nav>
-
+  
+<div class="container">
   <div id="carritoItems">
     <!-- Aquí se mostrarán los productos en el carrito -->
   </div>
+</div>
 
   <script>
     function mostrarProductosEnCarrito() {
-      const carrito = JSON.parse(localStorage.getItem('carrito'));
-      const carritoItems = document.getElementById('carritoItems');
-      let total = 0;
+  const carrito = JSON.parse(localStorage.getItem('carrito'));
+  const carritoItems = document.getElementById('carritoItems');
+  let total = 0;
 
-      carrito.forEach((producto) => {
-        const { id, nombre, precio } = producto;
-        const productoElemento = document.createElement('div');
-        productoElemento.classList.add('carritoProducto');
+  // Limpiar el contenido anterior antes de mostrar los productos
+  carritoItems.innerHTML = '';
 
-        const nombreElemento = document.createElement('p');
-        nombreElemento.textContent = `Nombre: ${nombre}`;
-        productoElemento.appendChild(nombreElemento);
+  carrito.forEach((producto) => {
+    const { id, nombre, precio } = producto;
+    const productoElemento = document.createElement('div');
+    productoElemento.classList.add('carritoProducto');
 
-        const precioElemento = document.createElement('p');
-        precioElemento.textContent = `Precio: ${precio}`;
-        productoElemento.appendChild(precioElemento);
+    const nombreElemento = document.createElement('p');
+    nombreElemento.textContent = `Nombre: ${nombre}`;
+    productoElemento.appendChild(nombreElemento);
 
-        const botonEliminar = document.createElement('button');
-        botonEliminar.textContent = 'Eliminar';
-        botonEliminar.onclick = () => eliminarDelCarrito(id);
-        productoElemento.appendChild(botonEliminar);
+    const precioElemento = document.createElement('p');
+    precioElemento.textContent = `Precio: ${precio}`;
+    productoElemento.appendChild(precioElemento);
 
-        carritoItems.appendChild(productoElemento);
+    const botonEliminar = document.createElement('button');
+    botonEliminar.textContent = 'Eliminar';
+    botonEliminar.onclick = () => eliminarDelCarrito(id);
+    productoElemento.appendChild(botonEliminar);
 
-        total += precio;
-      });
+    carritoItems.appendChild(productoElemento);
 
-      const totalCarrito = document.getElementById('total-carrito');
-      totalCarrito.textContent = `Total: $${total.toFixed(2)}`;
-    }
+    total += precio;
+  });
 
-    function eliminarDelCarrito(id) {
-      let carrito = JSON.parse(localStorage.getItem('carrito'));
-      carrito = carrito.filter(producto => producto.id !== id);
-      localStorage.setItem('carrito', JSON.stringify(carrito));
-
-      // Volver a mostrar los productos actualizados
-      const carritoItems = document.getElementById('carritoItems');
-      carritoItems.innerHTML = '';
-      mostrarProductosEnCarrito();
-    }
-
-    // Mostrar los productos en el carrito cuando la página se cargue
-    window.onload = mostrarProductosEnCarrito;
-
+  const totalCarrito = document.getElementById('total-carrito');
+  totalCarrito.textContent = `Total: $${total.toFixed(2)}`;
+}
 
   </script>
   <hr>
